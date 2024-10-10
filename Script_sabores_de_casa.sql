@@ -85,9 +85,12 @@ VALUES ('Pedro', 'González Fernández', '11223344C', 'pedro.gonzalez@example.co
 INSERT INTO camarero (nombre, apellidos, dni, email)
 VALUES ('Alberto', 'Sanabria García', '77223344C', 'alberto.sanabria@example.com');
 
-select * from camarero c ;
-ALTER SEQUENCE  RESTART WITH 1;
-select * from camarero c ;
+INSERT INTO camarero (nombre, apellidos, dni, email)
+VALUES ('Alberto', 'Sanabria García', '77223344C', 'alberto.sanabria@example.com');
+
+INSERT INTO camarero (nombre, apellidos, dni, email)
+VALUES ('Alberto', 'Sanabria García', '77223344C', 'alberto.sanabria@example.com');
+
 -- Mesa
 INSERT INTO mesa (numero, id_camarero)
 VALUES (1, 5);
@@ -119,6 +122,7 @@ VALUES (9, 3);
 INSERT INTO mesa (numero, id_camarero)
 VALUES (10, 4);
 
+
 -- Cliente
 INSERT INTO cliente (nombre)
 VALUES ('Carlos Martínez');
@@ -134,6 +138,7 @@ VALUES ('Marta Rodríguez');
 
 INSERT INTO cliente (nombre)
 VALUES ('José López');
+
 
 -- Mesa cliente
 INSERT INTO mesa_cliente (id_mesa, id_cliente)
@@ -270,76 +275,77 @@ VALUES ('Montadito de Salmón Ahumado', 'Montadito de pan integral con salmón a
 INSERT INTO producto (nombre, descripcion)
 VALUES ('Montadito de Pollo y Alioli', 'Montadito de pan con filete de pollo a la plancha, alioli, tomate y rúcula.');
 
+
 -- tipo producto
 -- Tipos para el producto 'Choco Frito'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 5.50, 1, 1);
+VALUES (1, 5.50, 0, 1);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 9.00, 2, 1);
+VALUES (1, 9.00, 1, 1);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 12.00, 3, 1);
+VALUES (1, 12.00, 2, 1);
 
 -- Tipos para el producto 'Calamares a la Romana'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 4.50, 1, 2);
+VALUES (1, 4.50, 0, 2);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 8.00, 2, 2);
+VALUES (1, 8.00, 1, 2);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 11.50, 3, 2);
+VALUES (1, 11.50, 2, 2);
 
 -- Tipos para el producto 'Gambas al Ajillo'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (3, 6.00, 1, 3);
+VALUES (2, 6.00, 2, 3);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (3, 10.50, 2, 3);
+VALUES (2, 10.50, 1, 3);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (3 15.00, 3, 3);
+VALUES (2, 15.00, 2, 3);
 
 -- Tipos para el producto 'Pulpo a la Gallega'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (4, 7.00, 1, 4);
+VALUES (3, 7.00, 0, 4);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (4, 12.50, 2, 4);
+VALUES (3, 12.50, 1, 4);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (4, 18.00, 3, 4);
+VALUES (3, 18.00, 2, 4);
 
 -- Tipos para el producto 'Tortilla de Camarones'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 3.50, 1, 5);
+VALUES (1, 3.50, 0, 5);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 6.50, 2, 5);
+VALUES (1, 6.50, 1, 5);
 
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (2, 9.00, 3, 5);
+VALUES (1, 9.00, 2, 5);
 
 -- Tipos para el producto 'Montadito de Lomo con Queso'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (1, 3.00, 4, 6);
+VALUES (0, 3.00, 3, 6);
 
 -- Tipos para el producto 'Montadito de Jamón Ibérico'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (1, 4.50, 4, 7);
+VALUES (0, 4.50, 3, 7);
 
 -- Tipos para el producto 'Montadito de Tortilla Española'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (1, 3.50, 4, 8);
+VALUES (0, 3.50, 3, 8);
 
 -- Tipos para el producto 'Montadito de Salmón Ahumado'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (1, 4.00, 4, 9);
+VALUES (0, 4.00, 3, 9);
 
 -- Tipos para el producto 'Montadito de Pollo y Alioli'
 INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
-VALUES (1, 3.80, 4, 10);
+VALUES (0, 3.80, 3, 10);
 
 
 -- linea pedido
@@ -363,7 +369,7 @@ VALUES (5, 13, 3, 4); -- 4 unidades de Tortilla de Camarones (Ración)
 
 INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
 VALUES (6, 16, 3, 2); -- 2 unidades de Montadito de Lomo con Queso (Unidad)
-
+select * from linea_pedido lp ;
 -- Pedido 4: dos productos con diferentes tipos y cantidades
 INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
 VALUES (7, 17, 4, 3); -- 3 unidades de Montadito de Jamón Ibérico (Unidad)
