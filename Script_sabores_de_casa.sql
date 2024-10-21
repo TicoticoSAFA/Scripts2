@@ -62,11 +62,11 @@ create table if not exists tipo_producto (
 
 create table if not exists linea_pedido (
 	id serial primary key,
-	id_producto int not null,
+
 	id_tipo_producto int not null,
 	id_pedido int not null,
 	cantidad int not null,
-	constraint fk_linea_pedido_producto foreign key (id_producto) references producto(id),
+
 	constraint fk_linea_pedido_tipo_producto foreign key (id_tipo_producto) references tipo_producto(id),
 	constraint fk_linea_pedido_pedido foreign key (id_pedido) references pedido(id)
 );
@@ -348,43 +348,45 @@ INSERT INTO tipo_producto (tipo, precio, tamanyo, id_producto)
 VALUES (0, 3.80, 3, 10);
 
 
--- linea pedido
+--Linea pedido
 -- Pedido 1: dos productos con diferentes tipos y cantidades
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (1, 1, 1, 2); -- 2 unidades de Choco Frito (Tapa)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (1, 1, 2); -- 2 unidades de Choco Frito (Tapa)
 
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (2, 4, 1, 1); -- 1 unidad de Calamares a la Romana (Media Ración)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (4, 1, 1); -- 1 unidad de Calamares a la Romana (Media Ración)
 
 -- Pedido 2: dos productos con diferentes tipos y cantidades
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (3, 7, 2, 3); -- 3 unidades de Gambas al Ajillo (Ración)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (7, 2, 3); -- 3 unidades de Gambas al Ajillo (Ración)
 
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (4, 10, 2, 2); -- 2 unidades de Pulpo a la Gallega (Media Ración)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (10, 2, 2); -- 2 unidades de Pulpo a la Gallega (Media Ración)
 
 -- Pedido 3: dos productos con diferentes tipos y cantidades
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (5, 13, 3, 4); -- 4 unidades de Tortilla de Camarones (Ración)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (13, 3, 4); -- 4 unidades de Tortilla de Camarones (Ración)
 
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (6, 16, 3, 2); -- 2 unidades de Montadito de Lomo con Queso (Unidad)
-select * from linea_pedido lp ;
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (16, 3, 2); -- 2 unidades de Montadito de Lomo con Queso (Unidad)
+
 -- Pedido 4: dos productos con diferentes tipos y cantidades
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (7, 17, 4, 3); -- 3 unidades de Montadito de Jamón Ibérico (Unidad)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (17, 4, 3); -- 3 unidades de Montadito de Jamón Ibérico (Unidad)
 
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (8, 18, 4, 1); -- 1 unidad de Montadito de Tortilla Española (Unidad)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (18, 4, 1); -- 1 unidad de Montadito de Tortilla Española (Unidad)
 
 -- Pedido 5: dos productos con diferentes tipos y cantidades
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (9, 19, 5, 2); -- 2 unidades de Montadito de Salmón Ahumado (Unidad)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (19, 5, 2); -- 2 unidades de Montadito de Salmón Ahumado (Unidad)
 
-INSERT INTO linea_pedido (id_producto, id_tipo_producto, id_pedido, cantidad)
-VALUES (10, 20, 5, 3); -- 3 unidades de Montadito de Pollo y Alioli (Unidad)
+INSERT INTO linea_pedido (id_tipo_producto, id_pedido, cantidad)
+VALUES (20, 5, 3); -- 3 unidades de Montadito de Pollo y Alioli (Unidad)
+
 
 
 select * from mesa;
 
-
+select * from pedido p ;
+select * from linea_pedido lp where id_pedido = 1;
